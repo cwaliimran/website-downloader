@@ -81,6 +81,7 @@ target/
 # IPython
 profile_default/
 ipython_config.py
+temp_auto_push.bat
 
 # pyenv
 #   For a library or package, you might want to ignore these files since the code is
@@ -164,3 +165,4 @@ cython_debug/
 
 # Local mirror output from test runs
 harsim_ca/
+branch_structure.json
