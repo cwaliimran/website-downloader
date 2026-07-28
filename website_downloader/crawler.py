@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 from urllib.robotparser import RobotFileParser
 
 from .cache import CrawlCache
-from .constants import ASSET_EXTENSIONS, DEFAULT_USER_AGENT, TIMEOUT
+from .constants import ASSET_EXTENSIONS, DEFAULT_USER_AGENT, PAGE_SUFFIXES, TIMEOUT
 from .exports import SavedResource, create_zip_archive, write_warc
 from .http import create_session, fetch_binary, fetch_html
 from .paths import cdn_local_path, create_dir, safe_write_text, to_local_asset_path, to_local_path
@@ -31,8 +31,6 @@ from .urltools import (
 )
 
 log = logging.getLogger(__name__)
-
-PAGE_SUFFIXES = {"", ".html", ".htm"}
 
 # Tags whose asset references are downloaded even when the URL has no file
 # extension. Media served from extensionless endpoints (e.g. OpenProject
@@ -276,6 +274,7 @@ def crawl_site(options: CrawlOptions) -> CrawlStats:
                             local_path.parent,
                             options.download_external_assets,
                             options.external_domains,
+                            options.exclude_patterns,
                         )
                         safe_write_text(local_path, str(result.soup), encoding="utf-8")
                         with stats_lock:

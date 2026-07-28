@@ -92,6 +92,8 @@ DEFAULT_HEADERS = {
     "Upgrade-Insecure-Requests": "1",
 }
 
+PAGE_SUFFIXES = {"", ".html", ".htm"}
+
 TIMEOUT = 15
 CHUNK_SIZE = 8192
 MAX_PATH_LEN = 240

@@ -8,6 +8,10 @@
 - `--url` can now be repeated, and `--url-file` seeds additional starting URLs from a text file, so one crawl can mirror several sections of a site instead of only a single starting page. ([#56](https://github.com/PKHarsimran/website-downloader/issues/56))
 - `--max-depth` limits how many link-hops are followed from each starting URL, keeping crawls focused instead of relying solely on `--max-pages`. ([#56](https://github.com/PKHarsimran/website-downloader/issues/56))
 
+### Fixed
+
+- Links to excluded pages are now saved pointing at the live URL instead of a local path that was never downloaded, which previously left a broken link in the offline mirror. ([#55](https://github.com/PKHarsimran/website-downloader/issues/55))
+
 ## v2.6.1 - 2026-07-08
 
 ### Fixed
