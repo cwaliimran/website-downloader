@@ -104,6 +104,11 @@ def test_crawl_site_skips_blacklisted_pages(blacklist_site, tmp_path: Path) -> N
     assert (output / "about.html").exists()
     assert not (output / "forum" / "thread1.html").exists()
 
+    html = (output / "index.html").read_text(encoding="utf-8")
+    # The excluded page was never downloaded, so the saved link must point at
+    # the live URL instead of a local path that doesn't exist.
+    assert f'href="{base_url}forum/thread1.html"' in html
+
 
 def test_crawl_site_respects_max_depth(depth_chain_site, tmp_path: Path) -> None:
     base_url, _site = depth_chain_site
